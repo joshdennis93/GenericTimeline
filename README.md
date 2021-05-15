@@ -22,11 +22,11 @@ A generic LWC which displays records related to a parent record, optionally usin
 - Trying to display the map in a small area of the screen will distort it and generally not work - don't do this!
 
 ## Examples
-![image1](/images/image1.png)
+![image1](/images/image1.PNG)
 
 ![image2](/images/image2.png)
 
-![image3](/images/image3.png)
+![image3](/images/image3.PNG)
 
 ## Use cases
 - Display any kind of data from child records to a parent (realistically not anything, but it's played nicely so far)
