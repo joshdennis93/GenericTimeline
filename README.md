@@ -26,6 +26,8 @@ A generic LWC which displays records related to a parent record, optionally usin
 
 ![image2](/images/image2.png)
 
+![image4](/images/image4.PNG)
+
 ![image3](/images/image3.PNG)
 
 ## Use cases
