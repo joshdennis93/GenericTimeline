@@ -1,0 +1,57 @@
+<template>
+  <lightning-card title={cardTitle} icon-name={cardIcon}>
+    <div class="slds-m-around_medium">
+      <!-- this is important because we only want to instantiate the detail once the wire has returned data-->
+      <template if:true={queriedRecords}>
+        <template if:true={enableMap}>
+        <lightning-layout multiple-rows>
+          <lightning-layout-item size="9" >
+            <lightning-map
+              map-markers={mapMarkers}
+              list-view="hidden"
+            ></lightning-map>
+          </lightning-layout-item>
+          <lightning-layout-item size="3" >
+            <!-- when in map mode, ensures that a NICE scrollbar appears. CSS file styles the scrollbar.-->
+            <div class="slds-scrollable--x" style="height: 525px;overflow-y:scroll;"> 
+            <ul class="slds-timeline">
+              <template for:each={queriedRecords} for:item="record">
+                <c-generic-timeline-item
+                  if:true={record}
+                  record={record}
+                  context-record-id={record.Id}
+                  key={record.Id}
+                  icon={icon}
+                  field-names={fieldNames}
+                  title={title}
+                  from-object={fromObject}
+                ></c-generic-timeline-item>
+                <!--recordId potentially could just be rolled into the key-->
+              </template>
+            </ul>
+          </div>
+          </lightning-layout-item>
+        </lightning-layout>
+      </template>
+      <template if:false={enableMap}>
+        <ul class="slds-timeline">
+          <template for:each={queriedRecords} for:item="record">
+            <c-generic-timeline-item
+              if:true={record}
+              record={record}
+              context-record-id={record.Id}
+              key={record.Id}
+              icon={icon}
+              field-names={fieldNames}
+              title={title}
+              from-object={fromObject}
+            ></c-generic-timeline-item>
+            <!--recordId potentially could just be rolled into the key-->
+          </template>
+        </ul>
+      </template>
+    </template>
+      <template if:true={error}> {error} </template>
+    </div>
+  </lightning-card>
+</template>

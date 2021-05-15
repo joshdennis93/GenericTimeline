@@ -1,0 +1,65 @@
+<template>
+  <li>
+    <div class={cssClasses}>
+      <!-- CSS class is defined dynamically here to allow for expanding on button press -->
+      <div class="slds-media">
+        <div class="slds-media__figure">
+          <button
+            onclick={handleClick}
+            class="slds-button slds-button_icon"
+            title="Press here to expand."
+            aria-controls="task-item-base"
+          >
+            <lightning-icon
+              icon-name="utility:switch"
+              title="item"
+              size="x-small"
+              class="slds-button__icon slds-timeline__details-action-icon"
+            ></lightning-icon>
+          </button>
+          <div class="slds-icon_container" title="task">
+            <lightning-icon icon-name={icon} size="small"> </lightning-icon>
+          </div>
+        </div>
+        <div class="slds-media__body">
+          <div class="slds-grid slds-grid_align-spread slds-timeline__trigger">
+            <div
+              class="slds-grid slds-grid_vertical-align-center slds-truncate_container_75 slds-no-space"
+            >
+              <h3 class="slds-truncate">
+                <template for:each={results} for:item="field">
+                  <p key={field.fieldName} if:true={field.isTitle}>
+                    <strong><a href={recordPageUrl} class="slds-card__header-link baseCard__header-title-container">{field.value}</a></strong>
+                  </p>
+                  <!-- note that this only shows the title field -->
+                </template>
+              </h3>
+            </div>
+          </div>
+          <article
+            class="slds-box slds-timeline__item_details slds-theme_shade slds-m-top_x-small slds-m-horizontal_xx-small"
+            id="task-item-base"
+            aria-hidden="false"
+          >
+            <ul class="slds-list_horizontal slds-wrap">
+              <li
+                class="slds-grid slds-grid_vertical slds-size_1-of-1"
+              >
+                <template for:each={results} for:item="field">
+                  <div key={field.fieldName} if:false={field.isTitle}>
+                    <span class="slds-text-title slds-p-bottom_x-small"
+                      >{field.fieldName}: 
+                    </span>
+                    <span class="slds-text-body_medium"
+                      > {field.value}</span
+                    >
+                  </div>
+                </template>
+              </li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </div>
+  </li>
+</template>
