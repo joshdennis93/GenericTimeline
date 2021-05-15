@@ -22,13 +22,10 @@ A generic LWC which displays records related to a parent record, optionally usin
 - Trying to display the map in a small area of the screen will distort it and generally not work - don't do this!
 
 ## Examples
-The map & field data:
 ![image1](/images/image1.png)
 
-The field data by itself:
 ![image2](/images/image2.png)
 
-A quick example of the configuration values:
 ![image3](/images/image3.png)
 
 ## Use cases
